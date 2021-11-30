@@ -32,21 +32,10 @@ public class Main {
     }
 
     public static void writeToFile(String path, List<Product> products) {
-        Scanner scanner = new Scanner(System.in);
         try {
             FileOutputStream fos = new FileOutputStream(path);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            System.out.println("Nhập tên sản phẩm: ");
-            String name = scanner.nextLine();
-            System.out.println("Nhập nhãn hiệu: ");
-            String brand = scanner.nextLine();
-            System.out.println("Nhập giá: ");
-            double price = Double.parseDouble(scanner.nextLine());
-            System.out.println("Nhập mô tả: ");
-            String description = scanner.nextLine();
-            System.out.println("ĐÃ THÊM VÀO DANH SÁCH!!");
             oos.writeObject(products);
-            oos.writeObject(new Product(name, brand, price, description));
             oos.close();
             fos.close();
         } catch (IOException e) {
